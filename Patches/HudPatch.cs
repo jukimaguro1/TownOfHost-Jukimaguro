@@ -281,6 +281,13 @@ namespace TownOfHost
                     __instance.ImpostorVentButton.ToggleVisible(isActive && Options.JackalCanVent.GetBool());
                     __instance.AbilityButton.ToggleVisible(false);
                     break;
+                case CustomRoles.Samurai:
+                    if (player.Data.Role.Role != RoleTypes.GuardianAngel)
+                        __instance.KillButton.ToggleVisible(isActive && !player.Data.IsDead);
+                    __instance.SabotageButton.ToggleVisible(isActive && Samurai.CanUseSabo.GetBool());
+                    __instance.ImpostorVentButton.ToggleVisible(isActive && Samurai.CanUseVent.GetBool());
+                    __instance.AbilityButton.ToggleVisible(false);
+                    break;
             }
         }
     }

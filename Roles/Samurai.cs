@@ -26,5 +26,9 @@ namespace TownOfHost
         {
             playerIdList = new();
         }
+        public static void Add(byte playerId)
+        {
+            playerIdList.Add(playerId);
+        }
     }
 }

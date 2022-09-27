@@ -30,5 +30,7 @@ namespace TownOfHost
         {
             playerIdList.Add(playerId);
         }
+        public static void ApplyGameOptions(GameOptionsData opt) => opt.RoleOptions.ShapeshifterCooldown = SwordCooldown.GetFloat();
+        public static void ApplyKillCooldown(byte id) => Main.AllPlayerKillCooldown[id] = KillCooldown.GetFloat();
     }
 }

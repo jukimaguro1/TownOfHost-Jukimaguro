@@ -286,7 +286,6 @@ namespace TownOfHost
                         __instance.KillButton.ToggleVisible(isActive && !player.Data.IsDead);
                     __instance.SabotageButton.ToggleVisible(isActive && Samurai.CanUseSabo.GetBool());
                     __instance.ImpostorVentButton.ToggleVisible(isActive && Samurai.CanUseVent.GetBool());
-                    __instance.AbilityButton.ToggleVisible(false);
                     break;
             }
         }

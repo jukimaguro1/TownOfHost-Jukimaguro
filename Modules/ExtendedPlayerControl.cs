@@ -345,6 +345,9 @@ namespace TownOfHost
                 case CustomRoles.EvilTracker:
                     EvilTracker.ApplyGameOptions(opt, player.PlayerId);
                     break;
+                case CustomRoles.Samurai:
+                    Samurai.ApplyGameOptions(opt);
+                    break;
                 case CustomRoles.Jackal:
                 case CustomRoles.JSchrodingerCat:
                     opt.SetVision(player, Options.JackalHasImpostorVision.GetBool());
@@ -628,6 +631,9 @@ namespace TownOfHost
                 case CustomRoles.Sheriff:
                     Sheriff.SetKillCooldown(player.PlayerId); //シェリフはシェリフのキルクールに。
                     break;
+                case CustomRoles.Samurai:
+                    Samurai.ApplyKillCooldown(player.PlayerId);
+                    break;
             }
             if (player.IsLastImpostor())
                 Main.AllPlayerKillCooldown[player.PlayerId] = Options.LastImpostorKillCooldown.GetFloat();
@@ -663,6 +669,11 @@ namespace TownOfHost
                     DestroyableSingleton<HudManager>.Instance.ImpostorVentButton.ToggleVisible(jackal_canUse && !player.Data.IsDead);
                     player.Data.Role.CanVent = jackal_canUse;
                     return;
+                case CustomRoles.Samurai:
+                    bool samurai_canUse = Samurai.CanUseVent.GetBool();
+                    DestroyableSingleton<HudManager>.Instance.ImpostorVentButton.ToggleVisible(samurai_canUse && !player.Data.IsDead);
+                    player.Data.Role.CanVent = samurai_canUse;
+                    break;
             }
         }
         public static bool IsDouseDone(this PlayerControl player)

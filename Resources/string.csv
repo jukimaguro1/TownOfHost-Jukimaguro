@@ -31,6 +31,7 @@ Puppeteer,Puppeteer,パペッティア,傀儡师,傀儡師,Puppeteer
 TimeThief,TimeThief,タイムシーフ,蚀时者,時間小偷,TimeThief
 Sniper,Sniper,スナイパー,狙击手,狙擊手,Sniper
 EvilTracker,EvilTracker,イビルトラッカー,邪恶的追踪者,,EvilTracker
+Samurai,Samurai,侍,武士,武士,Samurai
 
 # マッドメイト系役職
 Madmate,Madmate,マッドメイト,叛徒,叛徒,Madmate
@@ -106,6 +107,7 @@ TimeThiefInfo,Kill the Crewmates to steal discussion time,敵を殺し、会議�
 SniperInfo,Shoot the Crewmates in the distance,狙い撃つぜ,瞄准敌人，射击！,讓你的敵人在你的狙擊下死亡,Стреляйте в Членов Экипажа на расстоянии
 LastImpostorInfo,You are the last one,残ったのはあなただけ,你是最后的希望…,你是狼村最後的希望...,Ты остался последний
 EvilTrackerInfo,Track Players,プレイヤーを追跡しろ,追杀其他玩家,,Отслеживайте Игроков
+SamuraiInfo,Cut through the enemy,敵を切り裂け,斩断敌人,斬斷敵人,прорезать врага
 
 # マッドメイト系役職
 MadmateInfo,Help the Impostors,インポスターの援助をしよう,帮助内鬼,幫助狼人,Помогите Предателям
@@ -365,6 +367,8 @@ TimeThiefReturnStolenTimeUponDeath,Return Stolen Time After Death,死亡後に�
 EvilTrackerCanSeeKillFlash,EvilTracker Can See The Flash Of Impostor Kills,インポスターキル時にフラッシュが見える,当内鬼进行击杀时邪恶的追踪者可以看到闪光,,EvilTracker Может Видеть Вспышку Убийства Предатлелей
 EvilTrackerResetTargetAfterMeeting,EvilTracker Can Reset Target After Meeting,会議後に再度ターゲットを設定できる,会议后重置邪恶的追踪者追踪目标,,EvilTracker Может Сбросить Цель После Встречи
 KillFlashDuration,Kill Flash Duration(s),キルフラッシュの長さ(秒),击杀闪烁持续时间,,Длительность Вспышки Убийсва
+SamuraiSwordCooldown,Sword cool down,必殺技のクールダウン,
+SwordScope,Sword scope,必殺技の範囲,
 
 ## かくれんぼ設定
 HideAndSeekOptions,HideAndSeek Options,かくれんぼの設定,躲猫猫设置,躲貓貓設定,Настройки Пряток

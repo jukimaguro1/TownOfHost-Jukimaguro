@@ -308,6 +308,7 @@ namespace TownOfHost
         Puppeteer,
         TimeThief,
         EvilTracker,
+        Samurai,
         LastImpostor,
         //Madmate
         MadGuardian,

@@ -25,12 +25,63 @@ namespace TownOfHost
         public static void Init()
         {
             playerIdList = new();
+            IsSword = false;
         }
         public static void Add(byte playerId)
         {
             playerIdList.Add(playerId);
         }
+        public static bool IsEnable()
+        {
+            return playerIdList.Count > 0;
+        }
         public static void ApplyGameOptions(GameOptionsData opt) => opt.RoleOptions.ShapeshifterCooldown = SwordCooldown.GetFloat();
         public static void ApplyKillCooldown(byte id) => Main.AllPlayerKillCooldown[id] = KillCooldown.GetFloat();
+        public static bool IsSword;
+        public static void SamuraiKill()
+        {
+            foreach (var pc in PlayerControl.AllPlayerControls)
+            {
+                if (pc.IsAlive() && pc.PlayerId != PlayerControl.LocalPlayer.PlayerId)
+                {
+                    if (Getsword(PlayerControl.LocalPlayer, pc))
+                    {
+                        BySamuraiKillRPC(PlayerControl.LocalPlayer.PlayerId, pc.PlayerId);
+                        MessageWriter Writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SamuraiSword, SendOption.Reliable, -1);
+                        Writer.Write(PlayerControl.LocalPlayer.PlayerId);
+                        Writer.Write(pc.PlayerId);
+                        IsSword = true;
+                        AmongUsClient.Instance.FinishRpcImmediately(Writer);
+                    }
+                }
+            }
+        }
+        public static bool Getsword(PlayerControl source, PlayerControl player)
+        {
+            Vector3 position = source.transform.position;
+            Vector3 playerposition = player.transform.position;
+            var r = SwordScope.GetFloat();
+            if ((position.x + r >= playerposition.x) && (playerposition.x >= position.x - r))
+            {
+                if ((position.y + r >= playerposition.y) && (playerposition.y >= position.y - r))
+                {
+                    if ((position.z + r >= playerposition.z) && (playerposition.z >= position.z - r))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        public static void BySamuraiKillRPC(byte sourceId, byte targetId)
+        {
+            PlayerControl source = Utils.GetPlayerById(sourceId);
+            PlayerControl target = Utils.GetPlayerById(targetId);
+            if (source != null && target != null)
+            {
+                source.MurderPlayer(target);
+                PlayerState.SetDeathReason(target.PlayerId, PlayerState.DeathReason.SamuraiSword);
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Hazel;
 using UnityEngine;
+using InnerNet;
 
 namespace TownOfHost
 {
@@ -13,6 +14,7 @@ namespace TownOfHost
         public static CustomOption SwordScope;
         public static CustomOption CanUseVent;
         public static CustomOption CanUseSabo;
+        public static List<byte> SwordedPlayer;
         public static void SetupCustomOption()
         {
             Options.SetupRoleOptions(Id, TabGroup.ImpostorRoles, CustomRoles.Samurai);
@@ -26,10 +28,12 @@ namespace TownOfHost
         {
             playerIdList = new();
             IsSword = false;
+            SwordedPlayer = new();
         }
         public static void Add(byte playerId)
         {
             playerIdList.Add(playerId);
+            SwordedPlayer.Add(playerId);
         }
         public static bool IsEnable()
         {
@@ -46,8 +50,8 @@ namespace TownOfHost
                 {
                     if (Getsword(PlayerControl.LocalPlayer, pc))
                     {
-                        BySamuraiKillRPC(PlayerControl.LocalPlayer.PlayerId, pc.PlayerId);
-                        MessageWriter Writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.SamuraiSword, SendOption.Reliable, -1);
+                        RPC.BySamuraiKillRPC(PlayerControl.LocalPlayer.PlayerId, pc.PlayerId);
+                        MessageWriter Writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BySamuraiKillRPC, SendOption.Reliable, -1);
                         Writer.Write(PlayerControl.LocalPlayer.PlayerId);
                         Writer.Write(pc.PlayerId);
                         IsSword = true;
@@ -73,15 +77,30 @@ namespace TownOfHost
             }
             return false;
         }
-        public static void BySamuraiKillRPC(byte sourceId, byte targetId)
+        public static void Shapeshift(PlayerControl shapeshifter, PlayerControl player, bool shapeshifting)
         {
-            PlayerControl source = Utils.GetPlayerById(sourceId);
-            PlayerControl target = Utils.GetPlayerById(targetId);
-            if (source != null && target != null)
+            if (!SwordedPlayer.Contains(player.PlayerId))
             {
-                source.MurderPlayer(target);
-                PlayerState.SetDeathReason(target.PlayerId, PlayerState.DeathReason.SamuraiSword);
+                if (AmongUsClient.Instance.AmHost || !IsSword)
+                {
+                    foreach (var pc in PlayerControl.AllPlayerControls)
+                    {
+                        if (pc.IsAlive() && pc.PlayerId != player.PlayerId)
+                        {
+                            if (Getsword(player, pc))
+                            {
+                                UseSword();
+                                SamuraiKill();
+                            }
+                        }
+                    }
+                }
+                SwordedPlayer.Add(player.PlayerId);
             }
+        }
+        public static void UseSword()
+        {
+            IsSword = true;
         }
     }
 }

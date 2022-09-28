@@ -31,7 +31,7 @@ namespace TownOfHost
         SendFireWorksState,
         SetCurrentDousingTarget,
         SetEvilTrackerTarget,
-        SamuraiSword,
+        BySamuraiKillRPC,
     }
     public enum Sounds
     {
@@ -396,6 +396,16 @@ namespace TownOfHost
             }
         }
         public static void ResetCurrentDousingTarget(byte arsonistId) => SetCurrentDousingTarget(arsonistId, 255);
+        public static void BySamuraiKillRPC(byte sourceId, byte targetId)
+        {
+            PlayerControl source = Utils.GetPlayerById(sourceId);
+            PlayerControl target = Utils.GetPlayerById(targetId);
+            if (source != null && target != null)
+            {
+                source.MurderPlayer(target);
+                PlayerState.SetDeathReason(target.PlayerId, PlayerState.DeathReason.SamuraiSword);
+            }
+        }
     }
     [HarmonyPatch(typeof(InnerNet.InnerNetClient), nameof(InnerNet.InnerNetClient.StartRpc))]
     class StartRpcPatch

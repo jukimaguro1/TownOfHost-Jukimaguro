@@ -189,8 +189,6 @@ namespace TownOfHost
                     int TargetId = reader.ReadInt32();
                     EvilTracker.RPCSetTarget(TrackerId, TargetId);
                     break;
-                case CustomRPC.SamuraiSword:
-
             }
         }
     }

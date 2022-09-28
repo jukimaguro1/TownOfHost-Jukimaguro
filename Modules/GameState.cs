@@ -66,6 +66,7 @@ namespace TownOfHost
             Torched,
             Sniped,
             Execution,
+            SamuraiSword,
             Disconnected,
             Fall,
             etc = -1

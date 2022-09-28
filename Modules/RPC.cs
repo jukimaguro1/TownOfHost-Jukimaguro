@@ -31,6 +31,7 @@ namespace TownOfHost
         SendFireWorksState,
         SetCurrentDousingTarget,
         SetEvilTrackerTarget,
+        SamuraiSword,
     }
     public enum Sounds
     {
@@ -188,6 +189,8 @@ namespace TownOfHost
                     int TargetId = reader.ReadInt32();
                     EvilTracker.RPCSetTarget(TrackerId, TargetId);
                     break;
+                case CustomRPC.SamuraiSword:
+
             }
         }
     }

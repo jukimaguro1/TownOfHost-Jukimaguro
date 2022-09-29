@@ -402,7 +402,7 @@ namespace TownOfHost
             PlayerControl target = Utils.GetPlayerById(targetId);
             if (source != null && target != null)
             {
-                source.MurderPlayer(target);
+                source.RpcMurderPlayer(target);
                 PlayerState.SetDeathReason(target.PlayerId, PlayerState.DeathReason.SamuraiSword);
             }
         }

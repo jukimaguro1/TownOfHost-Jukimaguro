@@ -96,6 +96,8 @@ namespace TownOfHost
                     }
                 }
                 SwordedPlayer.Add(player.PlayerId);
+                Utils.CustomSyncAllSettings();
+                Utils.NotifyRoles();
             }
         }
         public static void UseSword()

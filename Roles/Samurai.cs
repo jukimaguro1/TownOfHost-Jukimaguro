@@ -39,7 +39,10 @@ namespace TownOfHost
         {
             return playerIdList.Count > 0;
         }
-        public static void ApplyGameOptions(GameOptionsData opt) => opt.RoleOptions.ShapeshifterCooldown = SwordCooldown.GetFloat();
+        public static void ApplyGameOptions(GameOptionsData opt, byte playerId)
+        {
+            opt.RoleOptions.ShapeshifterCooldown = IsSword ? SwordCooldown.GetFloat() : 255f;
+        }
         public static void ApplyKillCooldown(byte id) => Main.AllPlayerKillCooldown[id] = KillCooldown.GetFloat();
         public static bool IsSword;
         public static void SamuraiKill()

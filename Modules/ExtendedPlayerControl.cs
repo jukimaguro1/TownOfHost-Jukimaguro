@@ -346,7 +346,7 @@ namespace TownOfHost
                     EvilTracker.ApplyGameOptions(opt, player.PlayerId);
                     break;
                 case CustomRoles.Samurai:
-                    Samurai.ApplyGameOptions(opt);
+                    Samurai.ApplyGameOptions(opt, player.PlayerId);
                     break;
                 case CustomRoles.Jackal:
                 case CustomRoles.JSchrodingerCat:

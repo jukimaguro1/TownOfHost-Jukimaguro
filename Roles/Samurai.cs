@@ -27,7 +27,6 @@ namespace TownOfHost
         public static void Init()
         {
             playerIdList = new();
-            IsSword = false;
             SwordedPlayer = new();
         }
         public static void Add(byte playerId)
@@ -41,71 +40,49 @@ namespace TownOfHost
         }
         public static void ApplyGameOptions(GameOptionsData opt, byte playerId)
         {
-            opt.RoleOptions.ShapeshifterCooldown = IsSword ? SwordCooldown.GetFloat() : 255f;
+            opt.RoleOptions.ShapeshifterCooldown = SwordCooldown.GetFloat();
+            opt.RoleOptions.ShapeshifterDuration = 1;
         }
         public static void ApplyKillCooldown(byte id) => Main.AllPlayerKillCooldown[id] = KillCooldown.GetFloat();
-        public static bool IsSword;
         public static void SamuraiKill()
         {
-            foreach (var pc in PlayerControl.AllPlayerControls)
+            foreach (var samurai in PlayerControl.AllPlayerControls)
             {
-                if (pc.IsAlive() && pc.PlayerId != PlayerControl.LocalPlayer.PlayerId)
+                if (!(samurai.Is(CustomRoles.Samurai) && samurai.IsAlive())) continue;
+                foreach (var target in PlayerControl.AllPlayerControls)
                 {
-                    if (Getsword(PlayerControl.LocalPlayer, pc))
+                    if (samurai == target) continue;
+                    if (!SwordedPlayer.Contains(samurai.PlayerId)) continue;
+                    if (Vector2.Distance(samurai.GetTruePosition(), target.GetTruePosition()) <= SwordScope.GetFloat())
                     {
-                        RPC.BySamuraiKillRPC(PlayerControl.LocalPlayer.PlayerId, pc.PlayerId);
-                        MessageWriter Writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.BySamuraiKillRPC, SendOption.Reliable, -1);
-                        Writer.Write(PlayerControl.LocalPlayer.PlayerId);
-                        Writer.Write(pc.PlayerId);
-                        IsSword = true;
-                        AmongUsClient.Instance.FinishRpcImmediately(Writer);
+                        samurai.RpcMurderPlayer(target);
+                        SwordedPlayer.Add(samurai.PlayerId);
                     }
                 }
+
             }
-        }
-        public static bool Getsword(PlayerControl source, PlayerControl player)
-        {
-            Vector3 position = source.transform.position;
-            Vector3 playerposition = player.transform.position;
-            var r = SwordScope.GetFloat();
-            if ((position.x + r >= playerposition.x) && (playerposition.x >= position.x - r))
-            {
-                if ((position.y + r >= playerposition.y) && (playerposition.y >= position.y - r))
-                {
-                    if ((position.z + r >= playerposition.z) && (playerposition.z >= position.z - r))
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
         }
         public static void Shapeshift(PlayerControl shapeshifter, PlayerControl player, bool shapeshifting)
         {
             if (!SwordedPlayer.Contains(player.PlayerId))
             {
-                if (AmongUsClient.Instance.AmHost || !IsSword)
+                if (AmongUsClient.Instance.AmHost)
                 {
                     foreach (var pc in PlayerControl.AllPlayerControls)
                     {
                         if (pc.IsAlive() && pc.PlayerId != player.PlayerId)
                         {
-                            if (Getsword(player, pc))
-                            {
-                                UseSword();
-                                SamuraiKill();
-                            }
+                            /*if (Getsword(player, pc))
+                            {*/
+                            SamuraiKill();
+                            /*
+                        }*/
                         }
                     }
                 }
-                SwordedPlayer.Add(player.PlayerId);
-                Utils.CustomSyncAllSettings();
+                Utils.CustomSyncAllSettings(); //シェイプシフトしたらクールダウンを設定しなおし
                 Utils.NotifyRoles();
             }
-        }
-        public static void UseSword()
-        {
-            IsSword = true;
         }
     }
 }

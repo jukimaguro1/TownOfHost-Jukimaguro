@@ -14,7 +14,7 @@ namespace TownOfHost
         public static CustomOption SwordScope;
         public static CustomOption CanUseVent;
         public static CustomOption CanUseSabo;
-        public static List<byte> SwordedPlayer;
+        public static Dictionary<byte, bool> Slashed = new();
         public static void SetupCustomOption()
         {
             Options.SetupRoleOptions(Id, TabGroup.ImpostorRoles, CustomRoles.Samurai);
@@ -27,12 +27,12 @@ namespace TownOfHost
         public static void Init()
         {
             playerIdList = new();
-            SwordedPlayer = new();
+            Slashed = new();
         }
         public static void Add(byte playerId)
         {
             playerIdList.Add(playerId);
-            SwordedPlayer.Add(playerId);
+            Slashed.Add(playerId, false);
         }
         public static bool IsEnable()
         {
@@ -52,11 +52,9 @@ namespace TownOfHost
                 foreach (var target in PlayerControl.AllPlayerControls)
                 {
                     if (samurai == target) continue;
-                    if (!SwordedPlayer.Contains(samurai.PlayerId)) continue;
                     if (Vector2.Distance(samurai.GetTruePosition(), target.GetTruePosition()) <= SwordScope.GetFloat())
                     {
                         samurai.RpcMurderPlayer(target);
-                        SwordedPlayer.Add(samurai.PlayerId);
                     }
                 }
 
@@ -64,25 +62,19 @@ namespace TownOfHost
         }
         public static void Shapeshift(PlayerControl shapeshifter, PlayerControl player, bool shapeshifting)
         {
-            if (!SwordedPlayer.Contains(player.PlayerId))
+            if (AmongUsClient.Instance.AmHost)
             {
-                if (AmongUsClient.Instance.AmHost)
+                foreach (var pc in PlayerControl.AllPlayerControls)
                 {
-                    foreach (var pc in PlayerControl.AllPlayerControls)
+                    if (pc.IsAlive() && pc.PlayerId != player.PlayerId && !Slashed[shapeshifter.PlayerId])
                     {
-                        if (pc.IsAlive() && pc.PlayerId != player.PlayerId)
-                        {
-                            /*if (Getsword(player, pc))
-                            {*/
-                            SamuraiKill();
-                            /*
-                        }*/
-                        }
+                        SamuraiKill();
+                        Slashed[shapeshifter.PlayerId] = true;
                     }
                 }
-                Utils.CustomSyncAllSettings(); //シェイプシフトしたらクールダウンを設定しなおし
-                Utils.NotifyRoles();
             }
+            Utils.CustomSyncAllSettings(); //シェイプシフトしたらクールダウンを設定しなおし
+            Utils.NotifyRoles();
         }
     }
 }

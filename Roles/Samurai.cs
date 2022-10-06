@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Hazel;
 using UnityEngine;
-using InnerNet;
+using static TownOfHost.Translator;
 
 namespace TownOfHost
 {
@@ -76,5 +75,7 @@ namespace TownOfHost
             Utils.CustomSyncAllSettings(); //シェイプシフトしたらクールダウンを設定しなおし
             Utils.NotifyRoles();
         }
+
+        public static void GetAbilityButtonText(HudManager __instance) => __instance.AbilityButton.OverrideText($"{GetString("SlashButtonText")}");
     }
 }

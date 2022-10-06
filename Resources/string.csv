@@ -517,6 +517,7 @@ ArsonistDouseButtonText,Douse,塗る,涂油,澆油,Облить
 PuppeteerOperateButtonText,Operate,操る,操控,操控,Управлять
 BountyHunterChangeButtonText,Swap,変更,变更,變更,Смена
 DefaultShapeshiftText,SHIFT,変身,变形,變身,Превращение
+SlashButtonText,Slash,斬殺,,,
 All,All,すべて,全部,全部,Все
 Archive,Archive,アーカイブ,文件,檔案,Архив
 DisabledBySettings,Disabled by setting,設定で無効化されています,已在设置被中禁用,在設定中被禁用,Отключено настройкой

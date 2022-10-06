@@ -31,7 +31,6 @@ namespace TownOfHost
         SendFireWorksState,
         SetCurrentDousingTarget,
         SetEvilTrackerTarget,
-        BySamuraiKillRPC,
     }
     public enum Sounds
     {

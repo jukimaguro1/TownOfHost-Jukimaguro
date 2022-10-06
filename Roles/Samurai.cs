@@ -40,7 +40,11 @@ namespace TownOfHost
         public static void ApplyGameOptions(GameOptionsData opt, byte playerId)
         {
             opt.RoleOptions.ShapeshifterCooldown = SwordCooldown.GetFloat();
-            opt.RoleOptions.ShapeshifterDuration = 1;
+            opt.RoleOptions.ShapeshifterDuration = 0.1f;
+        }
+        public static void ApplySlashedOption(GameOptionsData opt, byte PlayerId)
+        {
+            opt.RoleOptions.ShapeshifterCooldown = 255f;
         }
         public static void ApplyKillCooldown(byte id) => Main.AllPlayerKillCooldown[id] = KillCooldown.GetFloat();
         public static void SamuraiKill()
@@ -62,6 +66,7 @@ namespace TownOfHost
         }
         public static void Shapeshift(PlayerControl shapeshifter, PlayerControl player, bool shapeshifting)
         {
+            var opt = Main.RealOptionsData.DeepCopy();
             if (AmongUsClient.Instance.AmHost)
             {
                 foreach (var pc in PlayerControl.AllPlayerControls)
@@ -70,6 +75,7 @@ namespace TownOfHost
                     {
                         SamuraiKill();
                         Slashed[shapeshifter.PlayerId] = true;
+                        ApplySlashedOption(opt, player.PlayerId);
                     }
                 }
             }

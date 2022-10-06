@@ -54,6 +54,7 @@ namespace TownOfHost
                     if (Vector2.Distance(samurai.GetTruePosition(), target.GetTruePosition()) <= SwordScope.GetFloat())
                     {
                         samurai.RpcMurderPlayer(target);
+                        PlayerState.SetDeathReason(target.PlayerId, PlayerState.DeathReason.Slash);
                     }
                 }
 

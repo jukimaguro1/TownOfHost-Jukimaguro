@@ -47,7 +47,7 @@ namespace TownOfHost
 
                 //動作
                 string publishermessage = string.Format(GetString("PublisherKiller"), targetplayername, killer.GetRealName(true));
-                Utils.SendMessage($"{publishermessage}", reporter.PlayerId);
+                Utils.SendMessage($"{publishermessage}");
             }, 3f, "UsePublisherAbility");
         }
     }

@@ -105,6 +105,7 @@ namespace TownOfHost
             Executioner.Init();
             Sheriff.Init();
             EvilTracker.Init();
+            Publisher.Init();
             CustomWinnerHolder.Reset();
             AntiBlackout.Reset();
 
@@ -361,6 +362,9 @@ namespace TownOfHost
                             break;
                         case CustomRoles.EvilTracker:
                             EvilTracker.Add(pc.PlayerId);
+                            break;
+                        case CustomRoles.Publisher:
+                            Publisher.Add(pc.PlayerId);
                             break;
                     }
                     pc.ResetKillCooldown();

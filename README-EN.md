@@ -658,6 +658,7 @@ Team : Crewmates<br>
 Basis : Crewmate<br>
 
 When one's corpse is reported, an imposter is written in chat to a random person.<br>
+If you are killed by a crew due to a special kill, it will be written as an imposter even if the person who killed you is a non-killable position.<br>
 
 #### Game Options
 

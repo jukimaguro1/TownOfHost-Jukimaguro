@@ -154,7 +154,7 @@ You can also reload the translation by pressing key `T`+`F5`.
 | [Warlock](#Warlock)                 | [Snitch](#Snitch)                 |                                   |           |
 | [Witch](#Witch)                     | [SpeedBooster](#SpeedBooster)     |                                   |           |
 | [Mafia](#Mafia)                     | [Trapper](#Trapper)               |                                   |           |
-| [Madmate](#Madmate)                 |                                   |                                   |           |
+| [Madmate](#Madmate)                 | [Publisher](#Publisher)           |                                   |           |
 | [MadGuardian](#MadGuardian)         |                                   |                                   |           |
 | [MadSnitch](#MadSnitch)             |                                   |                                   |           |
 | [SidekickMadmate](#SidekickMadmate) |                                   |                                   |           |
@@ -648,6 +648,22 @@ The time held in place on the body is decided by host in settings.<br>
 | Name            |
 | --------------- |
 | Freeze Duration |
+
+### Publisher
+
+Created by じゅきまぐろ<br>
+Original idea by しゅー<br>
+
+Team : Crewmates<br>
+Basis : Crewmate<br>
+
+When one's corpse is reported, an imposter is written in chat to a random person.<br>
+
+#### Game Options
+
+| Name            |
+| --------------- |
+| Send Message To Everyone |
 
 
 ## Neutral

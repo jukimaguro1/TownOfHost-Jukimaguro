@@ -524,5 +524,5 @@ All,All,すべて,全部,全部,Все
 Archive,Archive,アーカイブ,文件,檔案,Архив
 DisabledBySettings,Disabled by setting,設定で無効化されています,已在设置被中禁用,在設定中被禁用,Отключено настройкой
 Disabled,Disabled,無効,,,Неполноценный
-PublisherKiller,[Publisher reported] One of the Impostors is {0},[パブリッシャーの死体が通報された] インポスターのうちの一人は{1},,,
+PublisherKiller,[Publisher reported] One of the Impostors is {0},[公開者の死体が通報された] {0}がインポスターです,,,
 

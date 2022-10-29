@@ -35,7 +35,7 @@ namespace TownOfHost
         }
         public static void PublisherUseAbility(PlayerControl reporter, PlayerControl target)
         {
-            if (target = null) return;
+            if (target == null) return;
 
             new LateTask(() =>
             {

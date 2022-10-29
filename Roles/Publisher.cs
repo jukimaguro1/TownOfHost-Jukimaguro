@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static TownOfHost.Translator;
+using static TownOfHost.Options;
 
 namespace TownOfHost
 {
@@ -8,17 +9,21 @@ namespace TownOfHost
     {
         private static readonly int Id = 7000;
         public static List<byte> playerIdList = new();
+        public static CustomOption SendAllPlayer;
         public static Dictionary<byte, byte> Killer = new();
         public static List<byte> Target = new();
+        public static Dictionary<byte, byte> SendTarget = new();
         public static void SetupCustomOption()
         {
-            Options.SetupRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.Publisher);
+            SetupRoleOptions(Id, TabGroup.CrewmateRoles, CustomRoles.Publisher);
+            SendAllPlayer = CustomOption.Create(Id + 10, TabGroup.CrewmateRoles, Color.white, "PublisherSendAllPlayer", false, CustomRoleSpawnChances[CustomRoles.Publisher]);
         }
         public static void Init()
         {
             playerIdList = new();
             Killer = new();
             Target = new();
+            SendTarget = new();
         }
         public static void Add(byte playerId)
         {
@@ -46,7 +51,35 @@ namespace TownOfHost
 
                 //動作
                 string publishermessage = string.Format(GetString("PublisherKiller"), killer.GetRealName(true));
-                Utils.SendMessage($"{publishermessage}");
+                if (SendAllPlayer.GetBool())
+                {
+                    Utils.SendMessage($"{publishermessage}");
+                }
+                else
+                {
+                    var rand = new System.Random();
+                    List<PlayerControl> targetPlayers = new();
+                    //切断者と死亡者を除外してプレイヤーリストに
+                    foreach (PlayerControl p in PlayerControl.AllPlayerControls)
+                    {
+                        if (!p.Data.Disconnected && !p.Data.IsDead && !Main.SpeedBoostTarget.ContainsValue(p.PlayerId)) targetPlayers.Add(p);
+                    }
+                    //ターゲットが0なら送信先のプレイヤーをnullに
+                    if (targetPlayers.Count >= 1)
+                    {
+                        PlayerControl sendtarget = targetPlayers[rand.Next(0, targetPlayers.Count)];
+                        Logger.Info("インポスター表示先:" + sendtarget.cosmetics.nameText.text, "Publisher");
+                        SendTarget.Add(target.PlayerId, sendtarget.PlayerId);
+                        Utils.SendMessage($"{publishermessage}", PlayerControl.AllPlayerControls[SendTarget[target.PlayerId]].PlayerId);
+                    }
+                    else
+                    {
+                        SendTarget.Add(target.PlayerId, 255);
+                        Logger.SendInGame("Error.PublisherNullException");
+                        Logger.Warn("メッセージ送信先がnullです。", "Publisher");
+                    }
+
+                }
             }, 3f, "UsePublisherAbility");
         }
     }

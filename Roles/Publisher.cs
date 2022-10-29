@@ -43,10 +43,9 @@ namespace TownOfHost
                 if (reporter == target) return;
                 if (!target.Data.IsDead) return;
                 var killer = GetPublisherKiller(target.PlayerId);
-                string targetplayername = target.GetRealName(true);
 
                 //動作
-                string publishermessage = string.Format(GetString("PublisherKiller"), targetplayername, killer.GetRealName(true));
+                string publishermessage = string.Format(GetString("PublisherKiller"), killer.GetRealName(true));
                 Utils.SendMessage($"{publishermessage}");
             }, 3f, "UsePublisherAbility");
         }

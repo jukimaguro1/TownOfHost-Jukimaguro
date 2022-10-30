@@ -15,7 +15,7 @@
 
 ## リリース
 
-AmongUsバージョン : **2022.10.25**
+AmongUs バージョン : **2022.10.25**
 **最新版は[こちら](https://github.com/tukasa0001/TownOfHost/releases/latest)**
 
 過去バージョンは[こちら](https://github.com/tukasa0001/TownOfHost/releases)
@@ -196,6 +196,7 @@ GM はゲーム自体には何の影響も与えず、すべてのプレイヤ�
 | ターゲット変更時間(s)               |
 | ターゲット殺害時のキルクール(s)     |
 | ターゲット以外殺害時のキルクール(s) |
+| ターゲットへの矢印を表示するか      |
 
 ### EvilTracker/イビルトラッカー
 

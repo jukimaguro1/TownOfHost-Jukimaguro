@@ -32,6 +32,7 @@ namespace TownOfHost
         SendFireWorksState,
         SetCurrentDousingTarget,
         SetEvilTrackerTarget,
+        SetTimeManagerTaskCount,
     }
     public enum Sounds
     {
@@ -193,6 +194,9 @@ namespace TownOfHost
                     int TargetId = reader.ReadInt32();
                     EvilTracker.RPCSetTarget(TrackerId, TargetId);
                     break;
+                case CustomRPC.SetTimeManagerTaskCount:
+                    TimeManager.ReceiveRPC(reader);
+                    break;
             }
         }
     }
@@ -314,6 +318,9 @@ namespace TownOfHost
                     break;
                 case CustomRoles.EvilTracker:
                     EvilTracker.Add(targetId);
+                    break;
+                case CustomRoles.TimeManager:
+                    TimeManager.Add(targetId);
                     break;
 
                 case CustomRoles.Egoist:

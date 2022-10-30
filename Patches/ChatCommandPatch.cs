@@ -290,7 +290,11 @@ namespace TownOfHost
                 { CustomRoles.Snitch, "sn" },
                 { CustomRoles.SpeedBooster, "sb" },
                 { CustomRoles.Trapper, "tra" },
+<<<<<<< HEAD
                 { CustomRoles.Medium, "Med"},
+=======
+                { CustomRoles.TimeManager, "tm" },
+>>>>>>> origin/feature/TimeManager
                 //Neutral役職
                 { (CustomRoles)(-5), $"== {GetString("Neutral")} ==" }, //区切り用
                 { CustomRoles.Arsonist, "ar" },

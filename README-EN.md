@@ -166,7 +166,7 @@ You can also reload the translation by pressing key `T`+`F5`.
 | [Witch](#Witch)                     | [SpeedBooster](#SpeedBooster)     |                                   |           |
 | [Mafia](#Mafia)                     | [Trapper](#Trapper)               |                                   |           |
 | [Madmate](#Madmate)                 | [Medium](#Medium)                 |                                   |           |
-| [MadGuardian](#MadGuardian)         |                                   |                                   |           |
+| [MadGuardian](#MadGuardian)         | [TimeManager](#timemanager)       |                                   |           |
 | [MadSnitch](#MadSnitch)             |                                   |                                   |           |
 | [SidekickMadmate](#SidekickMadmate) |                                   |                                   |           |
 
@@ -283,7 +283,6 @@ Unless taking a kill by deadline, they murder themselves instantly.<br>
 
 > **Warning**  
 > Unavailable.
-
 Create and idea by しゅー<br>
 
 Team : Impostors<br>
@@ -675,6 +674,23 @@ You can get random information about the deadbody or the killer in the chat.<br>
 | Name                      |
 | ------------------------- |
 | Number of times available |
+### TimeManager
+
+Created by じゅきまぐろ<br>
+Original idea by おしゅし<br>
+
+Team : Crewmates<br>
+Basis : Crewmate<br>
+
+The more tasks you do, the longer your meeting will last.<br>
+When you die, the meeting time will be restored.<br>
+
+#### Game Options
+
+| Name                 |
+| -------------------- |
+| Increase Voting Time |
+| Increase Limit       |
 
 ## Neutral
 

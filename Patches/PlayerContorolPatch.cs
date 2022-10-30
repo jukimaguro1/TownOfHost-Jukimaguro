@@ -363,6 +363,8 @@ namespace TownOfHost
             }
             if (target.Is(CustomRoles.TimeThief))
                 target.ResetVotingTime();
+            if (target.Is(CustomRoles.TimeManager))
+                target.TimeManagerResetVotingTime();
 
 
             foreach (var pc in PlayerControl.AllPlayerControls)
@@ -1164,6 +1166,7 @@ namespace TownOfHost
             Logger.Info($"TaskComplete:{pc.PlayerId}", "CompleteTask");
             PlayerState.UpdateTask(pc);
             Utils.NotifyRoles();
+            TimeManager.OnCheckCompleteTask(pc);//タイムマネージャーのみタスク1つ終わるごとに処理
             if ((pc.GetPlayerTaskState().IsTaskFinished &&
                 pc.GetCustomRole() is CustomRoles.Lighter or CustomRoles.Doctor) ||
                 pc.GetCustomRole() is CustomRoles.SpeedBooster)

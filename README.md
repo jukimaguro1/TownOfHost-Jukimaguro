@@ -166,7 +166,7 @@ AmongUsバージョン : **2022.10.25**
 | [ウォーロック](#Warlockウォーロック)                                 | [スピードブースター](#SpeedBoosterスピードブースター)       |                                                             |           |
 | [魔女](#Witch魔女)                                                   | [トラッパー](#Trapperトラッパー)                            |                                                             |           |
 | [マフィア](#Mafiaマフィア)                                           | [ミディアム](#Mediumミディアム)                             |                                                             |           |
-| [マッドメイト](#Madmateマッドメイト)                                 |                                                             |                                                             |           |
+| [マッドメイト](#Madmateマッドメイト)                                 | [タイムマネージャー](#timemanagerタイムマネージャー)              |                                                             |           |
 | [マッドガーディアン](#MadGuardianマッドガーディアン)                 |                                                             |                                                             |           |
 | [マッドスニッチ](#MadSnitchマッドスニッチ)                           |                                                             |                                                             |           |
 | [サイドキックマッドメイト](#SidekickMadmateサイドキックマッドメイト) |                                                             |                                                             |           |
@@ -287,7 +287,6 @@ GM はゲーム自体には何の影響も与えず、すべてのプレイヤ�
 
 > **Warning**  
 > 現在使用できません。
-
 制作・考案者 : しゅー<br>
 
 陣営 : インポスター<br>
@@ -666,6 +665,23 @@ Polus や The Airship のドアを開けるとその部屋の全てのドアが�
 | 設定名               |
 | -------------------- |
 | 能力を使用できる回数 |
+
+### TimeManager/タイムマネージャー
+
+考案者 : おしゅし<br>
+製作者 : じゅきまぐろ<br>
+
+陣営 : クルーメイト<br>
+判定 : クルーメイト<br>
+
+タスクを終わらせるたびに会議時間が設定秒数延びます。<br>
+
+#### 設定
+
+| 設定名         |
+| -------------- |
+| 延びる会議時間 |
+| 延びる限界値   |
 
 ### Arsonist/アーソニスト
 
@@ -1106,3 +1122,17 @@ Polus や The Airship のドアを開けるとその部屋の全てのドアが�
 - [よっキング](https://github.com/ykundesu) <!--([Twitter](https://twitter.com/))-->
 - [ゆりの](https://github.com/yurinakira) <!--([Twitter](https://twitter.com/))-->
 - [Masami](https://github.com/Masami4711) <!--([Twitter](https://twitter.com/))-->
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

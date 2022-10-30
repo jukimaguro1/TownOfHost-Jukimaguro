@@ -11,8 +11,6 @@
 この Mod は非公式のものであり、この Mod の開発に関して Among Us の開発元である"Innersloth"は一切関与していません。<br>
 この Mod の問題などに関して公式に問い合わせないでください。<br>
 
-[![Discord](./Images/TownOfHost-Discord.png)](https://discord.gg/W5ug6hXB9V)
-
 ## リリース
 
 AmongUs バージョン : **2022.10.25**
@@ -1140,17 +1138,3 @@ Polus や The Airship のドアを開けるとその部屋の全てのドアが�
 - [よっキング](https://github.com/ykundesu) <!--([Twitter](https://twitter.com/))-->
 - [ゆりの](https://github.com/yurinakira) <!--([Twitter](https://twitter.com/))-->
 - [Masami](https://github.com/Masami4711) <!--([Twitter](https://twitter.com/))-->
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About

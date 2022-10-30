@@ -358,11 +358,8 @@ namespace TownOfHost
             TrapperBlockMoveTime = CustomOption.Create(20810, TabGroup.CrewmateRoles, Color.white, "TrapperBlockMoveTime", 5f, 1f, 180, 1, CustomRoleSpawnChances[CustomRoles.Trapper]);
             SetupRoleOptions(20900, TabGroup.CrewmateRoles, CustomRoles.Dictator);
             SetupRoleOptions(21000, TabGroup.CrewmateRoles, CustomRoles.Seer);
-<<<<<<< HEAD
             Medium.SetupCustomOption();
-=======
             TimeManager.SetupCustomOption();
->>>>>>> origin/feature/TimeManager
 
             // Neutral
             SetupRoleOptions(50500, TabGroup.NeutralRoles, CustomRoles.Arsonist);

@@ -166,8 +166,8 @@ You can also reload the translation by pressing key `T`+`F5`.
 | [Witch](#Witch)                     | [SpeedBooster](#SpeedBooster)     |                                   |           |
 | [Mafia](#Mafia)                     | [Trapper](#Trapper)               |                                   |           |
 | [Madmate](#Madmate)                 | [Medium](#Medium)                 |                                   |           |
-| [MadGuardian](#MadGuardian)         | [TimeManager](#timemanager)       |                                   |           |
-| [MadSnitch](#MadSnitch)             |                                   |                                   |           |
+| [MadGuardian](#MadGuardian)         | [TimeManager](#Timemanager)       |                                   |           |
+| [MadSnitch](#MadSnitch)             | [Publisher](#publisher)           |                                   |           |
 | [SidekickMadmate](#SidekickMadmate) |                                   |                                   |           |
 
 ### GM

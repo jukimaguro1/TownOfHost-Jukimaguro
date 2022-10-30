@@ -292,6 +292,7 @@ namespace TownOfHost
                 { CustomRoles.Trapper, "tra" },
                 { CustomRoles.Medium, "Med"},
                 { CustomRoles.TimeManager, "tm" },
+                { CustomRoles.Publisher, "Pu"},
                 //Neutral役職
                 { (CustomRoles)(-5), $"== {GetString("Neutral")} ==" }, //区切り用
                 { CustomRoles.Arsonist, "ar" },

@@ -361,6 +361,11 @@ namespace TownOfHost
                 Medium.Target.Add(target.PlayerId);
                 Medium.Killer.Add(target.PlayerId, __instance.PlayerId);
             }
+            if (!Publisher.Target.Contains(target.PlayerId))
+            {
+                Publisher.Target.Add(target.PlayerId);
+                Publisher.Killer.Add(target.PlayerId, __instance.PlayerId);
+            }
             if (target.Is(CustomRoles.TimeThief))
                 target.ResetVotingTime();
             if (target.Is(CustomRoles.TimeManager))

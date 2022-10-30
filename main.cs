@@ -205,6 +205,7 @@ namespace TownOfHost
                     {CustomRoles.Seer, "#61b26c"},
                     {CustomRoles.Medium, "#3cb371"},
                     {CustomRoles.TimeManager, "#6495ed"},
+                    {CustomRoles.Publisher, "#7fffd4"},
                     //第三陣営役職
                     {CustomRoles.Arsonist, "#ff6633"},
                     {CustomRoles.Jester, "#ec62a5"},
@@ -324,6 +325,7 @@ namespace TownOfHost
         Seer,
         Medium,
         TimeManager,
+        Publisher,
         CSchrodingerCat,//クルー陣営のシュレディンガーの猫
         //Neutral
         Arsonist,

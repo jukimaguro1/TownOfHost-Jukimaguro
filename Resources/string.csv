@@ -57,6 +57,7 @@ Dictator,Dictator,ディクテーター,独裁者,獨裁主義者,Dictator
 Seer,Seer,シーア,灵媒,,Seer
 Medium,Medium,ミディアム,,,
 TimeManager,TimeManager,タイムマネージャー,,,
+Publisher,Publisher,パブリッシャー,,,
 
 # 第三陣営役職
 Jester,Jester,ジェスター,小丑,小丑,Jester
@@ -133,6 +134,7 @@ DictatorInfo,Hang your enemy on your own judgement,独裁政治をしよう,让�
 SeerInfo,You Will See Players Die,他人の死んだ瞬間がわかる,你能感知死亡,,Вы Видите Когда Умирают Игроки
 MediumInfo,Question the deadbody to gain informations.,死体から情報を得ろ,,,
 TimeManagerInfo,Do the tasks and extend meeting time,タスクをして会議時間を延ばそう,,,
+PublisherInfo,Let's get killed and provide information,殺されて情報提供をしよう,,,
 
 # 第三陣営役職
 ArsonistInfo,Let them burn,燃やせ,火焰给我燃烧起来吧！,"燒吧,燒吧,燃燒吧",Пусть все они сгорят
@@ -200,6 +202,7 @@ DictatorInfoLong,"(Crewmates):\nWhen you vote for someone in a meeting, they for
 SeerInfoLong,"(Crewmates):Every time players die, Seers can see kill flash.",(クルーメイト陣営):\nプレイヤーが死亡するごとに、シーアはキルフラッシュを見ることができる。,(船员阵营):\n每当玩家死亡时，灵媒将会看到击杀闪烁。,,"(Член Экипажа):Каждый раз когда игроки умирают, Seer может видеть вспышку убийства."
 MediumInfoLong,"(Crewmates):\nThe medium is a crewmate who can ask the deadbody for information by report.\nYou can question deadbody. You can get random information about the deadbody or the killer in the chat.",通報をすることで死体に質問できる。\nチャットで死体や犯人の情報をランダムに入手することができる。",,,
 TimeManagerInfoLong,"(Crewmates):The more tasks you do, the longer your meeting will last. When you die, the meeting time will be restored.","(クルーメイト陣営):\nタスクを終わらせるごとに会議時間が延びる。死亡すると会議時間は元に戻る。",,,
+PublisherInfoLong,"(Crewmates):After being killed, when his corpse is reported, he writes the imposter in the chat alone at the meeting.",(クルーメイト陣営):\n殺された後、自分の死体が通報されると会議でインポスターを一人チャットで表記する。\n自分以外の死体が通報されてもインポスターは公開されない。\n送る対象はランダム1人(設定あり)。,,,
 
 # 第三陣営役職
 ArsonistInfoLong,(Neutrals):\nThey can douse other players by using the kill button and remaining next to the player for a few seconds.\nAfter dousing everyone alive the Arsonists can enter the vents to ignite which results in Arsonist win.,(第三陣営):\nキルボタンを使おうとすると、ターゲットに油を塗れる。\nすべてのクルーに油を塗ったら船を燃やして勝利する。,(独立阵营):\n纵火犯可以通过对玩家点击击杀按钮并在跟随其数秒来完成涂油行为。\n当所有存活玩家都被纵火犯涂油后，纵火犯可以通过跳通风管来点火，并单独获得胜利。,"(中立):\n當縱火犯嘗試使用殺人鍵,它將對他身邊最近的一個人澆上油,\n當他對所有玩家澆上油之後,縱火縱火犯點火即勝利。","(Нейтрал):\nОн может обливать игроков, нажав на кнопку 'Убить' и находясь рядом с игроком в течение нескольких секунд.\nПосле того как он обольёт всех живых игрокво, Arsonist сможет запрыгнуть в вентиляцию чтобы поджечь всех игроков, что приводит к победе Arsonist."
@@ -377,6 +380,7 @@ KillFlashDuration,Kill Flash Duration(s),キルフラッシュの長さ(秒),击
 MediumUseNumber,Medium Cool Down,ミディアムの能力使用可能回数,,,
 TimeManagerIncreaseMeetingTime,Increase voting time,延びる会議時間(秒),,,
 TimeManagerLimitMeetingTime,Increase limit,会議時間の延びる限界(秒),,,
+PublisherSendAllPlayer,Publisher Send A Message To Everyone,メッセージを全員に送る,,,
 
 ## かくれんぼ設定
 HideAndSeekOptions,HideAndSeek Options,かくれんぼの設定,躲猫猫设置,躲貓貓設定,Настройки Пряток
@@ -538,3 +542,5 @@ KillerColorType,[Info from Dead Person] {0} was killed by {1} color player.,[死
 DeadTime,[Info from Dead Person] {0} was killed {1} seconds ago.,[死者からの情報] {0}が殺されたのは{1}秒前です。,,,
 LighterColor,LightColor,明るい色,,,
 DarkerColor,DarkColor,暗い色,,,
+PublisherKiller,[Publisher reported] One of the Impostors is {0},[パブリッシャーの死体が通報された] {0}がインポスターです,,,
+

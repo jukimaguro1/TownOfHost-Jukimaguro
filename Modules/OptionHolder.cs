@@ -360,6 +360,7 @@ namespace TownOfHost
             SetupRoleOptions(21000, TabGroup.CrewmateRoles, CustomRoles.Seer);
             Medium.SetupCustomOption();
             TimeManager.SetupCustomOption();
+            Publisher.SetupCustomOption();
 
             // Neutral
             SetupRoleOptions(50500, TabGroup.NeutralRoles, CustomRoles.Arsonist);

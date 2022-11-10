@@ -355,6 +355,12 @@ namespace TownOfHost
                 Executioner.Target.Remove(target.PlayerId);
                 Executioner.SendRPC(target.PlayerId);
             }
+            if (!Medium.Target.Contains(target.PlayerId))
+            {
+                Medium.DeadTimer.TryAdd(target.PlayerId, 0f);
+                Medium.Target.Add(target.PlayerId);
+                Medium.Killer.Add(target.PlayerId, __instance.PlayerId);
+            }
             if (target.Is(CustomRoles.TimeThief))
                 target.ResetVotingTime();
 
@@ -365,7 +371,6 @@ namespace TownOfHost
                     Main.AllPlayerKillCooldown[pc.PlayerId] = Options.LastImpostorKillCooldown.GetFloat();
             }
             FixedUpdatePatch.LoversSuicide(target.PlayerId);
-
             PlayerState.SetDead(target.PlayerId);
             Utils.CountAliveImpostors();
             Utils.CustomSyncAllSettings();
@@ -457,8 +462,12 @@ namespace TownOfHost
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.ReportDeadBody))]
     class ReportDeadBodyPatch
     {
+        public static GameData.PlayerInfo reporter;
+        public static GameData.PlayerInfo Target;
         public static bool Prefix(PlayerControl __instance, [HarmonyArgument(0)] GameData.PlayerInfo target)
         {
+            reporter = __instance.Data;
+            Target = target;
             if (GameStates.IsMeeting) return false;
             Logger.Info($"{__instance.GetNameWithRole()} => {target?.GetNameWithRole() ?? "null"}", "ReportDeadBody");
             if (Options.IsStandardHAS && target != null && __instance == target.Object) return true; //[StandardHAS] ボタンでなく、通報者と死体が同じなら許可
@@ -602,6 +611,7 @@ namespace TownOfHost
                 //ターゲットのリセット
                 BountyHunter.FixedUpdate(player);
                 EvilTracker.FixedUpdate(player);
+                Medium.FixedUpdate(player);
                 if (GameStates.IsInTask && player.IsAlive() && Options.LadderDeath.GetBool())
                 {
                     FallFromLadder.FixedUpdate(player);

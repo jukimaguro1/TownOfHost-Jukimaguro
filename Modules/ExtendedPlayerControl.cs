@@ -4,6 +4,7 @@ using System.Linq;
 using Hazel;
 using InnerNet;
 using UnityEngine;
+using static TownOfHost.Translator;
 
 namespace TownOfHost
 {
@@ -704,6 +705,24 @@ namespace TownOfHost
             MeetingRoomManager.Instance.AssignSelf(reporter, target);
             DestroyableSingleton<HudManager>.Instance.OpenMeetingRoom(reporter);
             reporter.RpcStartMeeting(target);
+        }
+        public static string GetColorType(this PlayerControl player)
+        {
+            var ColorName = Palette.ColorNames[player.Data.DefaultOutfit.ColorId];
+            var LighterColor = new List<StringNames>()
+            {
+                StringNames.ColorPink,
+                StringNames.ColorOrange,
+                StringNames.ColorYellow,
+                StringNames.ColorWhite,
+                StringNames.ColorCyan,
+                StringNames.ColorLime,
+                StringNames.ColorRose,
+                StringNames.ColorBanana,
+                StringNames.ColorCoral
+                //黒、タン、茶、紫、グレー、マルーン、グリーン、赤、青はDarkColor
+            };
+            return LighterColor.Contains(ColorName) ? $"{GetString("LighterColor")}" : $"{GetString("DarkerColor")}";
         }
         public static bool IsModClient(this PlayerControl player) => Main.playerVersion.ContainsKey(player.PlayerId);
         ///<summary>

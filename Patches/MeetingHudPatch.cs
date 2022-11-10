@@ -269,6 +269,8 @@ namespace TownOfHost
                         pc.RpcSetNameEx(pc.GetRealName(isMeeting: true));
                     }
                 }, 3f, "SetName To Chat");
+
+                Medium.UseAbility(ReportDeadBodyPatch.reporter?.Object, ReportDeadBodyPatch.Target?.Object);
             }
 
             foreach (var pva in __instance.playerStates)
